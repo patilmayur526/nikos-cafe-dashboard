@@ -572,9 +572,7 @@ with tab1:
                     'Gross WoW %': lambda x: f'{x:+.1f}%' if pd.notna(x) else 'Base',
                     'Net WoW %':   lambda x: f'{x:+.1f}%' if pd.notna(x) else 'Base',
                     'Aramark/Sodexo Disc.': '${:,.0f}', 'Contract Disc. %': '{:.1f}%'
-                })
-                .background_gradient(subset=['Net WoW %'], cmap='RdYlGn', vmin=-30, vmax=30)
-                .background_gradient(subset=['Contract Disc. %'], cmap='Blues', vmin=0, vmax=50),
+                }),
             use_container_width=True, hide_index=True)
 
     st.markdown('<div class="section-header">Weekly Summary Table</div>', unsafe_allow_html=True)
@@ -583,9 +581,7 @@ with tab1:
     st.dataframe(
         display_w.style
             .format({'Gross Sales':'${:,.2f}','Net Sales':'${:,.2f}','Aramark/Sodexo Disc.':'${:,.2f}',
-                     'Contract Disc. %':'{:.1f}%','Inv. Spend':'${:,.2f}','Food Cost % (Net)':'{:.1f}%','Gross Profit':'${:,.2f}'})
-            .background_gradient(subset=['Food Cost % (Net)'], cmap='RdYlGn_r', vmin=25, vmax=60)
-            .background_gradient(subset=['Net Sales'], cmap='Greens'),
+                     'Contract Disc. %':'{:.1f}%','Inv. Spend':'${:,.2f}','Food Cost % (Net)':'{:.1f}%','Gross Profit':'${:,.2f}'}),
         use_container_width=True, hide_index=True)
 
 # ══════════════════════════════════════════
@@ -810,8 +806,7 @@ with tab4:
         st.dataframe(
             margin_table.style
                 .format({'Gross Sales':'${:,.0f}','Net Sales':'${:,.0f}','Aramark/Sodexo Disc.':'${:,.0f}',
-                         'Inv. Cost':'${:,.0f}','FC% (Net)':'{:.1f}%','Gross Profit':'${:,.0f}','FC% (Gross)':'{:.1f}%'})
-                .background_gradient(subset=['FC% (Net)'], cmap='RdYlGn_r', vmin=25, vmax=65),
+                         'Inv. Cost':'${:,.0f}','FC% (Net)':'{:.1f}%','Gross Profit':'${:,.0f}','FC% (Gross)':'{:.1f}%'}),
             use_container_width=True, hide_index=True)
 
     st.markdown('<div class="section-header">Net Profitability After All Fees</div>', unsafe_allow_html=True)
@@ -945,8 +940,7 @@ with tab5:
     cat_stats['Risk'] = cat_stats['CV %'].apply(lambda x: '🔴 High' if x > 50 else ('🟡 Moderate' if x > 25 else '🟢 Consistent'))
     st.dataframe(
         cat_stats.sort_values('CV %', ascending=False)
-            .style.format({'Avg Weekly Spend':'${:,.0f}','Std Dev':'${:,.0f}','CV %':'{:.1f}%'})
-            .background_gradient(subset=['CV %'], cmap='RdYlGn_r', vmin=0, vmax=80),
+            .style.format({'Avg Weekly Spend':'${:,.0f}','Std Dev':'${:,.0f}','CV %':'{:.1f}%'}),
         use_container_width=True, hide_index=True)
 
     st.markdown('<div class="section-header">High-Volume Perishables — Spoilage Watch</div>', unsafe_allow_html=True)
@@ -1105,9 +1099,7 @@ with tab6:
     be_summary.columns = ['Day','Avg Gross','Avg Net','Contract Disc % (Aramark)','# Days Observed','vs Break-Even','Status']
     st.dataframe(
         be_summary.style
-            .format({'Avg Gross':'${:,.0f}','Avg Net':'${:,.0f}','Contract Disc % (Aramark)':'{:.1f}%','vs Break-Even':'${:+,.0f}'})
-            .background_gradient(subset=['Avg Net'],       cmap='RdYlGn', vmin=800,  vmax=2500)
-            .background_gradient(subset=['vs Break-Even'], cmap='RdYlGn', vmin=-500, vmax=1500),
+            .format({'Avg Gross':'${:,.0f}','Avg Net':'${:,.0f}','Contract Disc % (Aramark)':'{:.1f}%','vs Break-Even':'${:+,.0f}'}),
         use_container_width=True, hide_index=True)
 
 # ─────────────────────────────────────────
