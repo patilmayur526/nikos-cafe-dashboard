@@ -259,9 +259,9 @@ with st.sidebar:
     st.markdown("## 🥙 Nikos Command Center")
     st.markdown("---")
     sales_path = st.text_input("Sales Excel Path",
-        value="/Users/mayurpatil/Downloads/NIKOS_2026/Sales_data/Combined_reports/combined_sales_data.xlsx")
+        value="data/combined_sales_data.xlsx")
     inv_path = st.text_input("Inventory Excel Path",
-        value="/Users/mayurpatil/Downloads/NIKOS_2026/order_data/COMBINED_Master_Analysis.xlsx")
+        value="data/COMBINED_Master_Analysis.xlsx")
     st.markdown("### ⚙️ Financial Settings")
     st.caption("💡 Aramark/Sodexo sets discounts — these are contract terms, not operational choices.")
     aramark_rate      = st.number_input("Aramark/Sodexo Commission %", 0.0, 100.0, 20.0, 0.5) / 100
